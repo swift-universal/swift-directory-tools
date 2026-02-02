@@ -5,7 +5,7 @@ import PackageDescription
 // MARK: - Configuration Service
 
 ConfigurationService.local.dependencies = [
-  .package(name: "common-log", path: "../../../../../../swift-universal/public/spm/universal/domain/system/common-log"),
+  .package(name: "common-log", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-log"),
   .package(
     name: "wrkstrm-main",
     path: "../../../../../../../wrkstrm/spm/universal/domain/system/wrkstrm-main"
@@ -59,13 +59,13 @@ let package: Package = .init(
     ),
     .executableTarget(
       name: "SwiftDirectoryToolsCLI",
-      path: "sources/swift-directory-tools-cli",
       dependencies: [
         .product(name: "ArgumentParser", package: "swift-argument-parser"),
         "SwiftDirectoryTools",
         .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
         .product(name: "CommonLog", package: "common-log"),
       ],
+      path: "sources/swift-directory-tools-cli",
       swiftSettings: ConfigurationService.inject.swiftSettings,
     ),
     .testTarget(
@@ -76,12 +76,12 @@ let package: Package = .init(
     ),
     .testTarget(
       name: "SwiftDirectoryToolsCLITests",
-      path: "tests/swift-directory-tools-cli-tests",
       dependencies: [
         "SwiftDirectoryToolsCLI",
         .product(name: "CommonLog", package: "common-log"),
         .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
       ],
+      path: "tests/swift-directory-tools-cli-tests",
       swiftSettings: ConfigurationService.inject.swiftSettings,
     ),
   ],

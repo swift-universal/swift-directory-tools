@@ -2,12 +2,19 @@
 import Foundation
 import PackageDescription
 
+let commonShellDependency: Package.Dependency = {
+  if ProcessInfo.useLocalDeps {
+    return .package(path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-shell")
+  }
+  return .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.0.1")
+}()
+
 // MARK: - Configuration Service
 
 ConfigurationService.local.dependencies = [
   .package(name: "common-log", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-log"),
   .package(name: "common-cli", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-cli"),
-  .package(name: "common-shell", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-shell"),
+  commonShellDependency,
   .package(
     name: "wrkstrm-main",
     path: "../../../../../../../wrkstrm/spm/universal/domain/system/wrkstrm-main"
@@ -21,7 +28,7 @@ ConfigurationService.local.dependencies = [
 ConfigurationService.remote.dependencies = [
   .package(url: "https://github.com/swift-universal/common-log.git", from: "3.0.0"),
   .package(url: "https://github.com/swift-universal/common-cli.git", from: "0.1.0"),
-  .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.1.0"),
+  .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.0.1"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-main.git", from: "3.0.0"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-foundation.git", from: "3.0.0"),
 ]
@@ -121,7 +128,9 @@ extension SwiftSetting {
 
 extension ProcessInfo {
   public static var useLocalDeps: Bool {
-    ProcessInfo.processInfo.environment["SPM_USE_LOCAL_DEPS"] == "true"
+    guard let raw = ProcessInfo.processInfo.environment["SPM_USE_LOCAL_DEPS"] else { return true }
+    let normalized = raw.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    return !(normalized == "0" || normalized == "false" || normalized == "no")
   }
 }
 

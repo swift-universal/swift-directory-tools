@@ -1,0 +1,51 @@
+{
+  "originHash": "997ea93652299c386f9a25d55d4649238c8643262084e13bdda8aa6aa1da0c2a",
+  "pins": [
+    {
+      "identity": "swift-argument-parser",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/apple/swift-argument-parser.git",
+      "state": {
+        "revision": "309a47b2b1d9b5e991f36961c983ecec72275be3",
+        "version": "1.6.1"
+      }
+    },
+    {
+      "identity": "swift-log",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/apple/swift-log.git",
+      "state": {
+        "revision": "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version": "1.6.4"
+      }
+    },
+    {
+      "identity": "wrkstrmfoundation",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/wrkstrm/WrkstrmFoundation.git",
+      "state": {
+        "revision": "bec37972d0d2eaf12fd66f74046e09bcdf8d7dd8",
+        "version": "2.6.0"
+      }
+    },
+    {
+      "identity": "commonlog",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/wrkstrm/common-log.git",
+      "state": {
+        "revision": "12d4a33af2070e5282aab14d84a48a2baa168d0a",
+        "version": "3.0.0"
+      }
+    },
+    {
+      "identity": "wrkstrmmain",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/wrkstrm/WrkstrmMain.git",
+      "state": {
+        "revision": "c2e57bd3f0f5e4ce720d5a92a0126e9b1d6750e1",
+        "version": "2.5.0"
+      }
+    }
+  ],
+  "version": 3
+}

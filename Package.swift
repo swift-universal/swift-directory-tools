@@ -6,7 +6,7 @@ let commonShellDependency: Package.Dependency = {
   if ProcessInfo.useLocalDeps {
     return .package(path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-shell")
   }
-  return .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.0.1")
+  return .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.1.2")
 }()
 
 // MARK: - Configuration Service
@@ -27,8 +27,8 @@ ConfigurationService.local.dependencies = [
 
 ConfigurationService.remote.dependencies = [
   .package(url: "https://github.com/swift-universal/common-log.git", from: "3.0.0"),
-  .package(url: "https://github.com/swift-universal/swift-common-cli.git", from: "0.1.0"),
-  .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.0.1"),
+  .package(url: "https://github.com/swift-universal/swift-common-cli.git", from: "0.1.1"),
+  .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.1.2"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-main.git", from: "3.0.0"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-foundation.git", from: "3.0.0"),
 ]
@@ -128,9 +128,9 @@ extension SwiftSetting {
 
 extension ProcessInfo {
   public static var useLocalDeps: Bool {
-    guard let raw = ProcessInfo.processInfo.environment["SPM_USE_LOCAL_DEPS"] else { return true }
+    guard let raw = ProcessInfo.processInfo.environment["SPM_USE_LOCAL_DEPS"] else { return false }
     let normalized = raw.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-    return !(normalized == "0" || normalized == "false" || normalized == "no")
+    return normalized == "1" || normalized == "true" || normalized == "yes" || normalized == "on"
   }
 }
 

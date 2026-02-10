@@ -13,7 +13,7 @@ let commonShellDependency: Package.Dependency = {
 
 ConfigurationService.local.dependencies = [
   .package(name: "common-log", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-log"),
-  .package(name: "common-cli", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-cli"),
+  .package(name: "swift-common-cli", path: "../../../../../../../swift-universal/public/spm/universal/domain/system/common-cli"),
   commonShellDependency,
   .package(
     name: "wrkstrm-main",
@@ -27,7 +27,7 @@ ConfigurationService.local.dependencies = [
 
 ConfigurationService.remote.dependencies = [
   .package(url: "https://github.com/swift-universal/common-log.git", from: "3.0.0"),
-  .package(url: "https://github.com/swift-universal/common-cli.git", from: "0.1.0"),
+  .package(url: "https://github.com/swift-universal/swift-common-cli.git", from: "0.1.0"),
   .package(url: "https://github.com/swift-universal/common-shell.git", from: "0.0.1"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-main.git", from: "3.0.0"),
   .package(url: "https://github.com/wrkstrm/wrkstrm-foundation.git", from: "3.0.0"),
@@ -75,7 +75,7 @@ let package: Package = .init(
         "SwiftDirectoryTools",
         .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
         .product(name: "CommonLog", package: "common-log"),
-        .product(name: "CommonCLI", package: "common-cli"),
+        .product(name: "CommonCLI", package: "swift-common-cli"),
         .product(name: "CommonShell", package: "common-shell"),
       ],
       path: "sources/swift-directory-tools-cli",
